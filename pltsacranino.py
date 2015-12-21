@@ -3,8 +3,10 @@ from matplotlib.mlab import csv2rec
 from matplotlib.cbook import get_sample_data
 from matplotlib.dates import YearLocator, MonthLocator, DateFormatter
 import datetime
-
-fname = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/OutputCSV2.csv')
+#
+# Change the location of the files below when moving to droplet
+#   
+fname = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/pastyears.csv')
 gender_degree_data = csv2rec(fname)
 #
 fnamecurrentyear = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/gaugeSAE')
@@ -98,7 +100,7 @@ for rank, column in enumerate(currentstorms):
 
 # Note that if the title is descriptive enough, it is unnecessary to include
 # axis labels
-plt.title('2015-2016 Wet Season\nEl Nino Tracking\nIn Sacramento', x=0.12, y=0.70, fontsize=24, ha='left')
+plt.title('2015-2016 Wet Season\nEl Nino Tracking\nIn Sacramento\nUpdated Daily', x=0.12, y=0.70, fontsize=24, ha='left')
 ax.set_ylabel('Inches of Rainfall at Sacramento Executive Airport',fontsize=16)
 ax.set_xlabel('Days After October 1',fontsize=16)
 # Finally, save the figure as a PNG.
