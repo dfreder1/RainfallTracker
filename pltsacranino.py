@@ -1,3 +1,7 @@
+#import matplotlib.pyplot as plt
+import matplotlib
+# Force matplotlib to not use any Xwindows backend.
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.mlab import csv2rec
 from matplotlib.cbook import get_sample_data
@@ -7,9 +11,11 @@ import datetime
 # Change the location of the files below when moving to droplet
 #   
 fname = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/pastyears.csv')
+#fname = get_sample_data('/var/www/SacraNino/SacraNino/data/pastyears.csv')
 gender_degree_data = csv2rec(fname)
 #
 fnamecurrentyear = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/gaugeSAE')
+#fnamecurrentyear = get_sample_data('/var/www/SacraNino/SacraNino/data/gaugeSAE')
 current_year_data = csv2rec(fnamecurrentyear)
 
 # These are the colors that will be used in the plot
