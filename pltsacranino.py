@@ -23,7 +23,7 @@ color_sequence = ['#000080', '#6495ed', '#006400', '#deb887', '#cd853f']
 
 # You typically want your plot to be ~1.33x wider than tall. 
 # Common sizes: (10, 7.5) and (12, 9)
-fig, ax = plt.subplots(1, 1, figsize=(12, 9))
+fig, ax = plt.subplots(1, 1, figsize=(10, 8))
 
 # Remove the plot frame lines. They are unnecessary here.
 ax.spines['top'].set_visible(False)
