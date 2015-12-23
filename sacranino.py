@@ -1,13 +1,14 @@
 import lxml.html as LH
-#from lxml import etree
 import socket,datetime
 from datetime import timedelta
+from sys import platform as _platform
+#
 print 'running with lxml.html and socket modules'
-##Get the daily rainfall file
+# Get the daily rainfall file, website appears to be updated between 8 am and 10 am PT
 station_id = ['SAE']
 timeout = 1200                 
 socket.setdefaulttimeout(timeout)
-
+#
 for item in station_id:       
 	#Parse the webpage 
     	tree = LH.parse('http://cdec.water.ca.gov/cgi-progs/queryDaily?SAE')
@@ -20,7 +21,12 @@ for item in station_id:
 	rainfall = tree.find('body').findall('div')[1].find('div').find('table').findall('tr')[rownum].findall('td')[3]
 	rainsofar2015season = str.strip(rainfall.text)
 	print rainfall.text+'  '+rainsofar2015season
-	f = open('data/gauge'+item,'a')
+        if _platform == "linux" or _platform == "linux2":
+            f = open('/var/www/SacraNino/data/gauge'+item,'a')
+        elif _platform == "darwin":
+            f = open('data/gauge'+item,'a')
+        elif _platform == "win32":
+            print 'not supported'
         yesterday =str(datetime.datetime.today() - timedelta(days=1))
         dayselapsed =(datetime.date.today() - datetime.date(2015,10,01))
         dayselapsed = dayselapsed.days - 1
@@ -28,11 +34,3 @@ for item in station_id:
         f.write('\n'+yesterday+','+str(dayselapsed)+','+rainsofar2015season)              
 	f.close()
 	print ' '
-	#print([td.text_content() for td in tree.xpath('//td')])
-	#Get the value for the number of the days elapsed since 10/1
-	#numofdaysyesterday = datetime.date.today().timetuple().tm_mday - 1
-	#There are a number of rows ('tr') before the day count starts so offset by that much
-	#rownumber = numofdaysyesterday+2
-	#Get the rainfall value for that row
-	#rainfall = tree.find('body').findall('div')[1].find('div').find('table').findall('tr')[rownumber].findall('td')[3]
-	#print rainfall.text
