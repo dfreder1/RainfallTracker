@@ -1,25 +1,21 @@
 import matplotlib
-# Force matplotlib to not use any Xwindows backend.
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.mlab import csv2rec
 from matplotlib.cbook import get_sample_data
 import datetime
 from sys import platform as _platform
 #
+# Force matplotlib to not use any Xwindows backend.
+matplotlib.use('Agg')
+#
 # Change the location of the files depending on mac or linux
 #   
 if _platform == "linux" or _platform == "linux2":
     fname = get_sample_data('/var/www/SacraNino/data/pastyears.csv')
+    fnamecurrentyear = get_sample_data('/var/www/SacraNino/data/gaugeSAE')
 elif _platform == "darwin":
     print 'Running on Mac'
     fname = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/pastyears.csv')
-elif _platform == "win32":
-    print 'not supported'
-#
-if _platform == "linux" or _platform == "linux2":
-    fnamecurrentyear = get_sample_data('/var/www/SacraNino/data/gaugeSAE')
-elif _platform == "darwin":
     fnamecurrentyear = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/gaugeSAE')
 elif _platform == "win32":
     print 'not supported'
