@@ -6,7 +6,7 @@ import datetime
 from sys import platform as _platform
 #
 # Force matplotlib to not use any Xwindows backend.
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
 #
 # Change the location of the files depending on mac or linux
 #   
