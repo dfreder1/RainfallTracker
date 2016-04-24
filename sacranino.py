@@ -34,7 +34,7 @@ for item in station_id:
         #rainfall = tree.find('body').findall('div')[1].find('div').find('table').findall('tr')[rownum].findall('td')[3]
 	print dategrabbed +'  '+rainsofar2015season
         if _platform == "linux" or _platform == "linux2":
-            f = open('/var/www/SacraNino/data/gauge'+item,'a')
+            f = open('/var/www/html/SacraNino/data/gauge'+item,'a')
         elif _platform == "darwin":
             f = open('data/gauge'+item,'a')
         elif _platform == "win32":
