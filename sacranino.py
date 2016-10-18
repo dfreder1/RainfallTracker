@@ -1,5 +1,5 @@
 from lxml import etree 
-import socket,datetime
+import socket,datetime,shutil
 from datetime import timedelta
 from sys import platform as _platform
 #
@@ -19,9 +19,6 @@ for item in station_id:
         result = etree.tostring(tree.getroot(),pretty_print=True, method="html")
 	print('getting station '+item)
         print(result)
-#	stationfromweb = tree.find('body').findall('div')[1].find('div').find('h1')
-#	print stationfromweb.text
-	#
         #Since the webpage always provides a month of data, Get the rainfall value for the
 	#29th row which should be at tr = 30
 	rownum = 30
@@ -29,20 +26,26 @@ for item in station_id:
         latestrow = etree.tostring(tablerows[rownum])
         dategrabbed = str.strip(latestrow[24:34])
         print dategrabbed 
-        rainsofar2015season = str.strip(latestrow[180:187])
-        print rainsofar2015season
-        #rainfall = tree.find('body').findall('div')[1].find('div').find('table').findall('tr')[rownum].findall('td')[3]
-	print dategrabbed +'  '+rainsofar2015season
+        rainsofarseason = str.strip(latestrow[180:187])
+        print rainsofarseason
+	print dategrabbed +'  '+rainsofarseason
         if _platform == "linux" or _platform == "linux2":
-            f = open('/var/www/html/SacraNino/data/gauge'+item,'a')
+            e = '/var/www/html/16-17/data/gauge'
+            f = open(e,'a')
+            g = '/var/www/html/16-17/data/gauge'+item+'backup'
+            shutil.copy(e,g)
         elif _platform == "darwin":
-            f = open('data/gauge'+item,'a')
+            e = 'data/gauge'+item
+            f = open(e,'a')
+            g = 'data/gauge'+item+'backup'
+            shutil.copy(e, g)
         elif _platform == "win32":
             print 'not supported'
-        yesterday =str(datetime.datetime.today() - timedelta(days=1))
-        dayselapsed =(datetime.date.today() - datetime.date(2015,10,01))
+        yesterday = datetime.datetime.today() - timedelta(days=1)
+        yesterday = yesterday.strftime("%m" "/" "%d")
+        dayselapsed = (datetime.date.today() - datetime.date(2016,10,01))
         dayselapsed = dayselapsed.days - 1
 	print dayselapsed
-        f.write('\n'+yesterday+','+str(dayselapsed)+','+rainsofar2015season)              
+        f.write('\n'+yesterday+','+str(dayselapsed)+','+rainsofarseason)              
 	f.close()
 	print ' '

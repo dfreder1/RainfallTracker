@@ -10,12 +10,12 @@ from sys import platform as _platform
 # Change the location of the files depending on mac or linux
 #   
 if _platform == "linux" or _platform == "linux2":
-    fname = get_sample_data('/var/www/html/SacraNino/data/pastyears.csv')
-    fnamecurrentyear = get_sample_data('/var/www/html/SacraNino/data/gaugeSAE')
+    fname = get_sample_data('/var/www/html/16-17/data/pastyears.csv')
+    fnamecurrentyear = get_sample_data('/var/www/html/16-17/data/gaugeSAE')
 elif _platform == "darwin":
     print 'Running on Mac'
-    fname = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/pastyears.csv')
-    fnamecurrentyear = get_sample_data('/Users/userdoug/documents/projects/sacranino/data/gaugeSAE')
+    fname = get_sample_data('/Users/userdoug/documents/projects/Rainfall/2016-17/Rainfalltracker/data/pastyears.csv')
+    fnamecurrentyear = get_sample_data('/Users/userdoug/documents/projects/Rainfall/2016-17/Rainfalltracker/data/gaugeSAE')
 elif _platform == "win32":
     print 'not supported'
 #
@@ -95,17 +95,19 @@ for rank, column in enumerate(currentstorms):
     print current_year_data.elapseddays
     print current_year_data[column_rec_name]
     line = plt.plot(current_year_data.elapseddays,current_year_data[column_rec_name],lw=4.5,color='black')
-    lastdatescraped='So far this year\nUpdated '+str(current_year_data.date[-1])[:10]
+#    lastdatescraped='So far this year\nUpdated '+str(current_year_data.date[-1])[:10]
+#    lastdatescraped='So far this year, Updated '+str(current_year_data.date[-1])[:10]
+    lastdatescraped=str(current_year_data.date[-1])[:10]
     plt.text(240, 34,'El Nino Years',fontsize=16, color='blue', rotation=90)
     plt.text(240, 11,'Drought Years',fontsize=16, color='brown', rotation=90)
-    plt.text(current_year_data.elapseddays[-1]+4,current_year_data[column_rec_name][-1], lastdatescraped,fontsize=10, color='black')
+    plt.text(current_year_data.elapseddays[-1]+0,current_year_data[column_rec_name][-1]+1, lastdatescraped, fontsize=16, color='black', rotation=00, horizontalalignment='center', verticalalignment='bottom')
     plt.plot(current_year_data.elapseddays[-1],current_year_data[column_rec_name][-1], marker='x',markersize=10,markeredgewidth=5 ,color='black')
 # Make the title big enough so it spans the entire plot, but don't make it
 # so big that it requires two lines to show.
 #
 # Note that if the title is descriptive enough, it is unnecessary to include
 # axis labels
-plt.title('2015-2016 Wet Season\nEl Nino Tracking\nIn Sacramento\nUpdated Daily', x=0.12, y=0.70, fontsize=24, ha='left')
+plt.title('2016-2017 Wet Season\nRainfall Tracking\nIn Sacramento\nUpdated Daily', x=0.12, y=0.70, fontsize=24, ha='left')
 ax.set_ylabel('Inches of Rainfall at Sacramento Executive Airport',fontsize=16)
 ax.set_xlabel('Days After October 1',fontsize=16)
 # Finally, save the figure as a PNG.
@@ -113,7 +115,7 @@ ax.set_xlabel('Days After October 1',fontsize=16)
 # Just change the file extension in this call.
 #
 if _platform == "linux" or _platform == "linux2":
-    plt.savefig('/var/www/html/SacraNino/outputcsv.png', bbox_inches='tight')
+    plt.savefig('/var/www/html/16-17/outputcsv.png', bbox_inches='tight')
 elif _platform == "darwin":
     plt.savefig('outputcsv.png', bbox_inches='tight')
 elif _platform == "win32":
