@@ -10,12 +10,12 @@ from sys import platform as _platform
 # Change the location of the files depending on mac or linux
 #   
 if _platform == "linux" or _platform == "linux2":
-    fname = get_sample_data('/var/www/html/Rainfall/2016-17/Rainfalltracker/data/pastyears.csv')
-    fnamecurrentyear = get_sample_data('/var/www/html/Rainfall/2016-17/Rainfalltracker/2016-17/Rainfalltracker/data/gaugeSAE')
+    fname = get_sample_data('/var/www/html/Rainfall/2016-17/RainfallTracker/data/pastyears.csv')
+    fnamecurrentyear = get_sample_data('/var/www/html/Rainfall/2016-17/RainfallTracker/data/gaugeSAE')
 elif _platform == "darwin":
     print 'Running on Mac'
-    fname = get_sample_data('/Users/userdoug/documents/projects/Rainfall/2016-17/Rainfalltracker/data/pastyears.csv')
-    fnamecurrentyear = get_sample_data('/Users/userdoug/documents/projects/Rainfall/2016-17/Rainfalltracker/data/gaugeSAE')
+    fname = get_sample_data('/Users/userdoug/documents/projects/Rainfall/2016-17/RainfallTracker/data/pastyears.csv')
+    fnamecurrentyear = get_sample_data('/Users/userdoug/documents/projects/Rainfall/2016-17/RainfallTracker/data/gaugeSAE')
 elif _platform == "win32":
     print 'not supported'
 #
@@ -115,7 +115,7 @@ ax.set_xlabel('Days After October 1',fontsize=16)
 # Just change the file extension in this call.
 #
 if _platform == "linux" or _platform == "linux2":
-    plt.savefig('/var/www/html/Rainfall/2016-17/Rainfalltracker/outputcsv.png', bbox_inches='tight')
+    plt.savefig('/var/www/html/Rainfall/2016-17/RainfallTracker/outputcsv.png', bbox_inches='tight')
 elif _platform == "darwin":
     plt.savefig('outputcsv.png', bbox_inches='tight')
 elif _platform == "win32":
