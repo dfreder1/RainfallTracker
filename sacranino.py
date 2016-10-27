@@ -30,9 +30,9 @@ for item in station_id:
         print rainsofarseason
 	print dategrabbed +'  '+rainsofarseason
         if _platform == "linux" or _platform == "linux2":
-            e = '/var/www/html/16-17/data/gauge'
+            e = '/var/www/html/Rainfall/2016-17/RainfallTracker/data/gauge'+item
             f = open(e,'a')
-            g = '/var/www/html/16-17/data/gauge'+item+'backup'
+            g = '/var/www/html/Rainfall/2016-17/RainfallTracker/data/gauge'+item+'backup'
             shutil.copy(e,g)
         elif _platform == "darwin":
             e = 'data/gauge'+item
