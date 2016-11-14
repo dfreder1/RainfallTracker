@@ -100,7 +100,7 @@ for rank, column in enumerate(currentstorms):
     lastdatescraped=str(current_year_data.date[-1])[:10]
     plt.text(240, 34,'El Nino Years',fontsize=16, color='blue', rotation=90)
     plt.text(240, 11,'Drought Years',fontsize=16, color='brown', rotation=90)
-    plt.text(current_year_data.elapseddays[-1]+0,current_year_data[column_rec_name][-1]+1, lastdatescraped, fontsize=16, color='black', rotation=00, horizontalalignment='center', verticalalignment='bottom')
+    plt.text(current_year_data.elapseddays[-1]+0,current_year_data[column_rec_name][-1]+1, lastdatescraped, fontsize=16, color='black', rotation=00, horizontalalignment='center', verticalalignment='bottom', backgroundcolor='white')
     plt.plot(current_year_data.elapseddays[-1],current_year_data[column_rec_name][-1], marker='x',markersize=10,markeredgewidth=5 ,color='black')
 # Make the title big enough so it spans the entire plot, but don't make it
 # so big that it requires two lines to show.
