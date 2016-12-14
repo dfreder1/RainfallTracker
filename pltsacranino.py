@@ -100,8 +100,10 @@ for rank, column in enumerate(currentstorms):
     lastdatescraped=str(current_year_data.date[-1])[:10]
     plt.text(240, 34,'El Nino Years',fontsize=16, color='blue', rotation=90)
     plt.text(240, 11,'Drought Years',fontsize=16, color='brown', rotation=90)
-    plt.text(current_year_data.elapseddays[-1]+0,current_year_data[column_rec_name][-1]+1, lastdatescraped, fontsize=16, color='black', rotation=00, horizontalalignment='center', verticalalignment='bottom', backgroundcolor='white')
-    plt.plot(current_year_data.elapseddays[-1],current_year_data[column_rec_name][-1], marker='x',markersize=10,markeredgewidth=5 ,color='black')
+#    plt.annotate(lastdatescraped, xy=(current_year_data.elapseddays[-1]-2,current_year_data[column_rec_name][-1]+1), xytext=(current_year_data.elapseddays[-1]-12,current_year_data[column_rec_name][-1]+3), arrowprops=dict(facecolor='black', shrink=0.00, width=2.5, headwidth=9),horizontalalignment='right', fontsize=12, )
+    plt.annotate(lastdatescraped, xy=(current_year_data.elapseddays[-1]-0,current_year_data[column_rec_name][-1]+0), xytext=(current_year_data.elapseddays[-1]-12,current_year_data[column_rec_name][-1]+3), arrowprops=dict(facecolor='black', shrink=0.10, width=2.5, headwidth=9, frac=.25),horizontalalignment='right', fontsize=12, )
+#    plt.text(current_year_data.elapseddays[-1]+0,current_year_data[column_rec_name][-1]+1, lastdatescraped, fontsize=16, color='black', rotation=00, horizontalalignment='center', verticalalignment='bottom', backgroundcolor='white')
+    plt.plot(current_year_data.elapseddays[-1],current_year_data[column_rec_name][-1], marker='o',markersize=10,markeredgewidth=2, fillstyle='none',color='black')
 # Make the title big enough so it spans the entire plot, but don't make it
 # so big that it requires two lines to show.
 #
