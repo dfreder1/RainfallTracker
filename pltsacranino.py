@@ -109,7 +109,7 @@ for rank, column in enumerate(currentstorms):
 #
 # Note that if the title is descriptive enough, it is unnecessary to include
 # axis labels
-plt.title('2016-2017 Wet Season\nRainfall Tracking\nIn Sacramento\nUpdated Daily', x=0.12, y=0.70, fontsize=24, ha='left')
+plt.title('2016-2017 Wet Season\nRainfall Tracking\nIn Sacramento\nUpdated Daily', x=0.03, y=0.72, fontsize=24, ha='left')
 ax.set_ylabel('Inches of Rainfall at Sacramento Executive Airport',fontsize=16)
 ax.set_xlabel('Days After October 1',fontsize=16)
 # Finally, save the figure as a PNG.
